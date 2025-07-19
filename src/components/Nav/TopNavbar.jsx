@@ -29,7 +29,7 @@ export default function TopNavbar() {
           <Link className="pointer flexNullCenter" to="home" smooth={true}>
             <LogoIcon />
             <h1 style={{ marginLeft: "15px" }} className="font20 extraBold">
-              fanatic
+              ZUBYTE SOLUTION
             </h1>
           </Link>
           <BurderWrapper className="pointer" onClick={() => toggleSidebar(!sidebarOpen)}>
@@ -48,17 +48,17 @@ export default function TopNavbar() {
             </li>
             <li className="semiBold font15 pointer">
               <Link activeClass="active" style={{ padding: "10px 15px" }} to="projects" spy={true} smooth={true} offset={-80}>
-                Projects
+                Clients
               </Link>
             </li>
             <li className="semiBold font15 pointer">
               <Link activeClass="active" style={{ padding: "10px 15px" }} to="blog" spy={true} smooth={true} offset={-80}>
-                Blog
+                Testimonials
               </Link>
             </li>
             <li className="semiBold font15 pointer">
               <Link activeClass="active" style={{ padding: "10px 15px" }} to="pricing" spy={true} smooth={true} offset={-80}>
-                Pricing
+                About Us
               </Link>
             </li>
             <li className="semiBold font15 pointer">
