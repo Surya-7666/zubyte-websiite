@@ -41,7 +41,7 @@ export default function Projects() {
   return (
     <Wrapper id="projects">
       <Header>
-        <h2 className="font40 extraBold"> Our Projects</h2>
+        <h2 className="font40 extraBold"> Our Clients</h2>
         <p className="font13">Explore the ideas brought to life </p>
       </Header>
 

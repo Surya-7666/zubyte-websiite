@@ -1,7 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import axios from "axios"; // Add this line
 
 export default function Contact() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState({ message: "", type: "" });
+  const showAlert = (message, type = "success") => {
+    setAlert({ message, type });
+    setTimeout(() => {
+      setAlert({ message: "", type: "" });
+    }, 6000);
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await axios.post("http://172.21.0.10:5000/api/messages/send", formData);
+      showAlert("Message sent successfully!", "success");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      if (err.response && err.response.status === 400) {
+        showAlert(err.response.data.error, "warning");
+      } else {
+        showAlert("Failed to send message.", "error");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+
+
+
   return (
     <Wrapper id="contact">
       <Container className="container">
@@ -16,26 +53,122 @@ export default function Contact() {
         </LeftPanel>
 
         <FormPanel>
-          <form>
+          <form onSubmit={handleSubmit}>
+            {alert.message && (
+              <StyledAlert className={alert.type}>
+                {alert.message}
+              </StyledAlert>
+            )}
+
             <Field>
-              <input type="text" required />
+              <input
+                type="text"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+              />
               <label>Name</label>
             </Field>
             <Field>
-              <input type="email" required />
+              <input
+                type="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+              />
               <label>Email</label>
             </Field>
             <Field>
-              <textarea rows="5" required></textarea>
+              <textarea
+                rows="5"
+                name="message"
+                required
+                value={formData.message}
+                onChange={handleChange}
+              />
               <label>Message</label>
             </Field>
-            <SendButton type="submit">Send Message</SendButton>
+            <SendButton type="submit" disabled={loading}>
+              {loading ? (
+                <>
+                  <Spinner /> Sending...
+                </>
+              ) : (
+                "Send Message"
+              )}
+            </SendButton>
+
           </form>
         </FormPanel>
       </Container>
     </Wrapper>
   );
 }
+const StyledAlert = styled.div`
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-weight: 500;
+  z-index: 9999;
+  animation: fadeInOut 4s ease forwards;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  color: white;
+  font-size: 1rem;
+
+  &.success {
+    background-color: #4caf50;
+  }
+
+  &.error {
+    background-color: #f44336;
+  }
+
+  &.warning {
+    background-color: #ff9800;
+  }
+
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(20px); }
+  }
+
+  @media (max-width: 480px) {
+    top: auto;
+    bottom: 50px; /* approx. above the submit button */
+    left: 15%;
+    transform: translateX(50%);
+    padding: 8px 14px;
+    font-size: 0.75rem;
+    border-radius: 8px;
+    max-width: 70%;
+    text-align: center;
+  }
+`;
+
+
+
+const Spinner = styled.div`
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 10px;
+  display: inline-block;
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`;
+
 
 const Wrapper = styled.section`
   background: linear-gradient(135deg, #e0e0e0,);
