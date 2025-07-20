@@ -1,122 +1,151 @@
 import React from "react";
 import styled from "styled-components";
-// Assets
-import ContactImg1 from "../../assets/img/contact-1.png";
-import ContactImg2 from "../../assets/img/contact-2.png";
-import ContactImg3 from "../../assets/img/contact-3.png";
 
 export default function Contact() {
   return (
     <Wrapper id="contact">
-      <div className="lightBg">
-        <div className="container">
-          <HeaderInfo>
-            <h1 className="font40 extraBold">Let's get in touch</h1>
-            <p className="font13">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              <br />
-              labore et dolore magna aliquyam erat, sed diam voluptua.
-            </p>
-          </HeaderInfo>
-          <div className="row" style={{ paddingBottom: "30px" }}>
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-              <Form>
-                <label className="font13">First name:</label>
-                <input type="text" id="fname" name="fname" className="font20 extraBold" />
-                <label className="font13">Email:</label>
-                <input type="text" id="email" name="email" className="font20 extraBold" />
-                <label className="font13">Subject:</label>
-                <input type="text" id="subject" name="subject" className="font20 extraBold" />
-                <textarea rows="4" cols="50" type="text" id="message" name="message" className="font20 extraBold" />
-              </Form>
-              <SumbitWrapper className="flex">
-                <ButtonInput type="submit" value="Send Message" className="pointer animate radius8" style={{ maxWidth: "220px" }} />
-              </SumbitWrapper>
-            </div>
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 flex">
-              <div style={{ width: "50%" }} className="flexNullCenter flexColumn">
-                <ContactImgBox>
-                  <img src={ContactImg1} alt="office" className="radius6" />
-                </ContactImgBox>
-                <ContactImgBox>
-                  <img src={ContactImg2} alt="office" className="radius6" />
-                </ContactImgBox>
-              </div>
-              <div style={{ width: "50%" }}>
-                <div style={{ marginTop: "100px" }}>
-                  <img src={ContactImg3} alt="office" className="radius6" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Container className="container">
+        <LeftPanel>
+          <h2>Let's Talk</h2>
+          <p>We're just a message away. Reach out to us for collabs, queries, or just say hi !! </p>
+          <ContactInfo>
+            <div><strong>Email:</strong> hello@zubyte.tech</div>
+            <div><strong>Phone:</strong> +91 98765 43210</div>
+            <div><strong>Location:</strong> Tirunelveli, Tamilnadu</div>
+          </ContactInfo>
+        </LeftPanel>
+
+        <FormPanel>
+          <form>
+            <Field>
+              <input type="text" required />
+              <label>Name</label>
+            </Field>
+            <Field>
+              <input type="email" required />
+              <label>Email</label>
+            </Field>
+            <Field>
+              <textarea rows="5" required></textarea>
+              <label>Message</label>
+            </Field>
+            <SendButton type="submit">Send Message</SendButton>
+          </form>
+        </FormPanel>
+      </Container>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.section`
-  width: 100%;
+  background: linear-gradient(135deg, #e0e0e0,);
+  padding: 80px 0;
+  backdrop-filter: blur(10px);
 `;
-const HeaderInfo = styled.div`
-  padding: 70px 0 30px 0;
-  @media (max-width: 860px) {
-    text-align: center;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-radius: 20px;
+  padding: 40px;
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
 `;
-const Form = styled.form`
-  padding: 70px 0 30px 0;
+
+const LeftPanel = styled.div`
+  flex: 1;
+  margin-right: 30px;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #222;
+  }
+
+  p {
+    color: #444;
+    margin-bottom: 20px;
+  }
+`;
+
+const ContactInfo = styled.div`
+  div {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #333;
+  }
+`;
+
+const FormPanel = styled.div`
+  flex: 1;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const Field = styled.div`
+  position: relative;
+  margin-bottom: 25px;
+
   input,
   textarea {
     width: 100%;
-    background-color: transparent;
-    border: 0px;
+    padding: 15px 10px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.6);
     outline: none;
-    box-shadow: none;
-    border-bottom: 1px solid #707070;
-    height: 30px;
-    margin-bottom: 30px;
+    resize: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: #333;
+    }
   }
-  textarea {
-    min-height: 100px;
+
+  label {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    color: #777;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: 0.3s;
   }
-  @media (max-width: 860px) {
-    padding: 30px 0;
+
+  input:focus + label,
+  input:valid + label,
+  textarea:focus + label,
+  textarea:valid + label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.85rem;
+    background: #fff;
+    padding: 0 5px;
+    color: #000;
   }
 `;
-const ButtonInput = styled.input`
-  border: 1px solid #7620ff;
-  background-color: #7620ff;
-  width: 100%;
-  padding: 15px;
-  outline: none;
+
+const SendButton = styled.button`
+  padding: 14px 28px;
+  font-size: 1rem;
+  background-color: #111;
   color: #fff;
-  :hover {
-    background-color: #580cd2;
-    border: 1px solid #7620ff;
-    color: #fff;
-  }
-  @media (max-width: 991px) {
-    margin: 0 auto;
-  }
-`;
-const ContactImgBox = styled.div`
-  max-width: 180px; 
-  align-self: flex-end; 
-  margin: 10px 30px 10px 0;
-`;
-const SumbitWrapper = styled.div`
-  @media (max-width: 991px) {
-    width: 100%;
-    margin-bottom: 50px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: #333;
+    transform: translateY(-2px);
   }
 `;
-
-
-
-
-
-
-
-
-
