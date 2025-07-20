@@ -1,200 +1,162 @@
 import React from "react";
-import styled from "styled-components";
-// Components
-import ProjectBox from "../Elements/ProjectBox";
-import FullButton from "../Buttons/FullButton";
+import Slider from "react-slick";
+import styled, { keyframes } from "styled-components";
+
 // Assets
 import ProjectImg1 from "../../assets/img/projects/1.png";
-import ProjectImg2 from "../../assets/img/projects/2.png";
-import ProjectImg3 from "../../assets/img/projects/3.png";
-import ProjectImg4 from "../../assets/img/projects/4.png";
-import ProjectImg5 from "../../assets/img/projects/5.png";
-import ProjectImg6 from "../../assets/img/projects/6.png";
-import AddImage2 from "../../assets/img/add/add2.png";
+import ProjectImg2 from "../../assets/img/projects/2.jpeg";
+import ProjectImg3 from "../../assets/img/projects/3.jpeg";
+import ProjectImg4 from "../../assets/img/projects/4.jpeg";
+import ProjectImg5 from "../../assets/img/projects/5.jpeg";
+import ProjectImg6 from "../../assets/img/projects/6.jpeg";
+
+const projects = [
+  { img: ProjectImg1, link: "https://tetroninfotech.com/", title: "Tetron Infotech" },
+  { img: ProjectImg2, link: "https://jafonlinestore.github.io/", title: "JAF Online Store" },
+  { img: ProjectImg3, link: "https://ijmm.chendurph.com/", title: "IJMM Journal" },
+  { img: ProjectImg4, link: "https://lujeinnovations.com/", title: "Luje Innovations" },
+  { img: ProjectImg5, link: "https://eliita.com/", title: "Eliita Fashion" },
+  { img: ProjectImg6, link: "https://exceljournals.org.in/", title: "Excel Journals" },
+];
 
 export default function Projects() {
+  const settings = {
+    infinite: true,
+    speed: 7000,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 0,
+    cssEase: "linear",
+    arrows: false,
+    pauseOnHover: true,
+    swipeToSlide: true,
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 3 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 480, settings: { slidesToShow: 1 } },
+    ],
+  };
+
   return (
     <Wrapper id="projects">
-      <div className="whiteBg">
-        <div className="container">
-          <HeaderInfo>
-            <h1 className="font40 extraBold">Our Awesome Projects</h1>
-            <p className="font13">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              <br />
-              labore et dolore magna aliquyam erat, sed diam voluptua.
-            </p>
-          </HeaderInfo>
-          <div className="row textCenter">
-            <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <ProjectBox
-                img={ProjectImg1}
-                title="Awesome Project"
-                text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-                action={() => alert("clicked")}
-              />
-            </div>
-            <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <ProjectBox
-                img={ProjectImg2}
-                title="Awesome Project"
-                text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-                action={() => alert("clicked")}
-              />
-            </div>
-            <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <ProjectBox
-                img={ProjectImg3}
-                title="Awesome Project"
-                text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-                action={() => alert("clicked")}
-              />
-            </div>
-          </div>
-          <div className="row textCenter">
-            <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <ProjectBox
-                img={ProjectImg4}
-                title="Awesome Project"
-                text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-                action={() => alert("clicked")}
-              />
-            </div>
-            <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <ProjectBox
-                img={ProjectImg5}
-                title="Awesome Project"
-                text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-                action={() => alert("clicked")}
-              />
-            </div>
-            <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <ProjectBox
-                img={ProjectImg6}
-                title="Awesome Project"
-                text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-                action={() => alert("clicked")}
-              />
-            </div>
-          </div>
-          <div className="row flexCenter">
-            <div style={{ margin: "50px 0", width: "200px" }}>
-              <FullButton title="Load More" action={() => alert("clicked")} />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="lightBg">
-        <div className="container">
-          <Advertising className="flexSpaceCenter">
-            <AddLeft>
-              <AddLeftInner>
-                <ImgWrapper className="flexCenter">
-                  <img className="radius8" src={AddImage2} alt="add" />
-                </ImgWrapper>
-              </AddLeftInner>
-            </AddLeft>
-            <AddRight>
-              <h4 className="font15 semiBold">A few words about company</h4>
-              <h2 className="font40 extraBold">A Study of Creativity</h2>
-              <p className="font12">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-                diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-              </p>
-              <ButtonsRow className="flexNullCenter" style={{ margin: "30px 0" }}>
-                <div style={{ width: "190px" }}>
-                  <FullButton title="Get Started" action={() => alert("clicked")} />
-                </div>
-                <div style={{ width: "190px", marginLeft: "15px" }}>
-                  <FullButton title="Contact Us" action={() => alert("clicked")} border />
-                </div>
-              </ButtonsRow>
-            </AddRight>
-          </Advertising>
-        </div>
-      </div>
+      <Header>
+        <h2 className="font40 extraBold"> Our Projects</h2>
+        <p className="font13">Explore the ideas brought to life </p>
+      </Header>
+
+      <SliderWrapper>
+        <Slider {...settings}>
+          {projects.map((project, index) => (
+            <Card
+              key={index}
+              onClick={() => window.open(project.link, "_blank")}
+            >
+              <ImageWrapper>
+                <img src={project.img} alt={project.title} />
+              </ImageWrapper>
+              <Title>{project.title}</Title>
+            </Card>
+          ))}
+        </Slider>
+      </SliderWrapper>
     </Wrapper>
   );
 }
 
+// === Styled Components ===
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
 const Wrapper = styled.section`
   width: 100%;
+  padding: 60px 20px;
+  background: linear-gradient(135deg,  #ffffff);
 `;
-const HeaderInfo = styled.div`
-  @media (max-width: 860px) {
-    text-align: center;
+
+const Header = styled.div`
+  text-align: center;
+  margin-bottom: 40px;
+
+  h2 {
+    font-size: 2.4rem;
+    color: #0a0a0a;
+    margin-bottom: 10px;
   }
-`;
-const Advertising = styled.div`
-  padding: 100px 0;
-  margin: 100px 0;
-  position: relative;
-  @media (max-width: 1160px) {
-    padding: 60px 0 40px 0;
-  }
-  @media (max-width: 860px) {
-    flex-direction: column;
-    padding: 0 0 30px 0;
-    margin: 80px 0 0px 0;
-  }
-`;
-const ButtonsRow = styled.div`
-  @media (max-width: 860px) {
-    justify-content: space-between;
-  }
-`;
-const AddLeft = styled.div`
-  position: relative;
-  width: 50%;
+
   p {
-    max-width: 475px;
-  }
-  @media (max-width: 860px) {
-    width: 80%;
-    order: 2;
-    text-align: center;
-    h2 {
-      line-height: 3rem;
-      margin: 15px 0;
-    }
-    p {
-      margin: 0 auto;
-    }
+    font-size: 1rem;
+    color: #666;
   }
 `;
-const AddRight = styled.div`
-  width: 50%;
-  @media (max-width: 860px) {
-    width: 80%;
-    order: 2;
+
+const SliderWrapper = styled.div`
+  margin: 0 auto;
+  max-width: 1200px;
+
+  .slick-slide {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
   }
 `;
-const AddLeftInner = styled.div`
-  width: 100%;
-  position: absolute;
-  top: -300px;
-  left: 0;
-  @media (max-width: 1190px) {
-    top: -250px;
-  }
-  @media (max-width: 920px) {
-    top: -200px;
-  }
-  @media (max-width: 860px) {
-    order: 1;
-    position: relative;
-    top: -60px;
-    left: 0;
+
+const Card = styled.div`
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s ease;
+  cursor: pointer;
+  text-align: center;
+  min-width: 180px;
+  max-width: 240px;
+  animation: ${fadeIn} 0.6s ease both;
+
+  &:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    border: 1px solid #c9e7ff;
   }
 `;
-const ImgWrapper = styled.div`
-  width: 100%;
-  padding: 0 15%;
+
+const ImageWrapper = styled.div`
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 14px;
+  border-radius: 16px;
+  padding: 10px;
+  background: linear-gradient(135deg, #d1eaff, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
   img {
-    width: 100%;
-    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
   }
-  @media (max-width: 400px) {
-    padding: 0;
+
+  ${Card}:hover & img {
+    transform: scale(1.08) rotate(1deg);
   }
+`;
+
+const Title = styled.div`
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  transition: all 0.3s ease;
 `;
