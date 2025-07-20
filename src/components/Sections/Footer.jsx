@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
 import LogoImg from "../../assets/svg/Logo";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export default function Contact() {
   const getCurrentYear = () => {
@@ -44,11 +47,19 @@ export default function Contact() {
               <LinksGroup>
                 <GroupTitle>Get in Touch</GroupTitle>
                 <SocialIcons>
-                  <a href="#"><i className="fab fa-instagram"></i></a>
-                  <a href="#"><i className="fab fa-x-twitter"></i></a>
-                  <a href="#"><i className="fab fa-linkedin-in"></i></a>
+                  <a href="https://www.instagram.com/sudharsan_444" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faInstagram} size="lg" style={{ color: "#E1306C" }} />
+                  </a>
+                  <a href="mailto:your.email@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faEnvelope} size="lg" style={{ color: "#D44638" }} />
+                  </a>
+                  <a href="https://twitter.com/your_username" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faTwitter} size="lg" style={{ color: "#1DA1F2" }} />
+                  </a>
                 </SocialIcons>
+
               </LinksGroup>
+
             </RightSide>
           </FooterContent>
 
@@ -150,18 +161,24 @@ const GroupTitle = styled.h3`
 
 const SocialIcons = styled.div`
   display: flex;
-  gap: 15px;
+  gap: 25px;
 
-  i {
-    font-size: 18px;
-    color: #aaa;
-    transition: all 0.3s ease;
+  a {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s;
 
     &:hover {
-      color: #60e5c2;
+      transform: scale(1.2);
     }
   }
+
+  svg {
+    font-size: 18px;
+    transition: color 0.3s ease;
+  }
 `;
+
 
 const BottomBar = styled.div`
   padding: 20px;
