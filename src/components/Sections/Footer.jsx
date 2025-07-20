@@ -1,50 +1,179 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
-// Assets
 import LogoImg from "../../assets/svg/Logo";
 
 export default function Contact() {
-
   const getCurrentYear = () => {
     return new Date().getFullYear();
-  }
+  };
 
   return (
-    <Wrapper>
-      <div className="darkBg">
+    <FooterWrapper>
+      <div style={{ background: "#0e0e0e", width: "100%" }}>
         <div className="container">
-          <InnerWrapper className="flexSpaceCenter" style={{ padding: "30px 0" }}>
-            <Link className="flexCenter animate pointer" to="home" smooth={true} offset={-80}>
-              <LogoImg />
-              <h1 className="font15 extraBold whiteColor" style={{ marginLeft: "15px" }}>
-                Fanatic
-              </h1>
-            </Link>
-            <StyleP className="whiteColor font13">
-              © {getCurrentYear()} - <span className="purpleColor font13">Fanatic</span> All Right Reserved
-            </StyleP>
+          <FooterContent>
+            <LeftSide>
+              <Link to="home" smooth={true} offset={-80} className="pointer" style={{ display: "flex", alignItems: "center" }}>
+                <LogoImg />
+                <LogoText>ZUBYTE SOLUTION</LogoText>
+              </Link>
+              <Tagline>Where Ideas <span className="highlight">Evolve</span> into Product.</Tagline>
+            </LeftSide>
 
-            <Link className="whiteColor animate pointer font13" to="home" smooth={true} offset={-80}>
-              Back to top
+            <RightSide>
+              <LinksGroup>
+                <GroupTitle>Services</GroupTitle>
+                <a href="#">Design</a>
+                <a href="#">Development</a>
+              </LinksGroup>
+
+              <LinksGroup>
+                <GroupTitle>Products</GroupTitle>
+                <a href="#">Web</a>
+                <a href="#">App</a>
+                <a href="#">Software</a>
+              </LinksGroup>
+
+              <LinksGroup>
+                <GroupTitle>Company</GroupTitle>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+              </LinksGroup>
+
+              <LinksGroup>
+                <GroupTitle>Get in Touch</GroupTitle>
+                <SocialIcons>
+                  <a href="#"><i className="fab fa-instagram"></i></a>
+                  <a href="#"><i className="fab fa-x-twitter"></i></a>
+                  <a href="#"><i className="fab fa-linkedin-in"></i></a>
+                </SocialIcons>
+              </LinksGroup>
+            </RightSide>
+          </FooterContent>
+
+          <BottomBar>
+            <p>
+              © {getCurrentYear()} - <span className="highlight">Zubyte</span> All rights reserved
+            </p>
+            <Link to="home" smooth={true} offset={-80} className="pointer highlight">
+              Back to top ↑
             </Link>
-          </InnerWrapper>
+          </BottomBar>
         </div>
       </div>
-    </Wrapper>
+    </FooterWrapper>
   );
 }
 
-const Wrapper = styled.div`
+
+const FooterWrapper = styled.div`
   width: 100%;
-`;
-const InnerWrapper = styled.div`
-  @media (max-width: 550px) {
-    flex-direction: column;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+
+  a {
+    color: #aaa;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+
+  .highlight {
+    color: #60e5c2;
   }
 `;
-const StyleP = styled.p`
-  @media (max-width: 550px) {
-    margin: 20px 0;
+
+const FooterContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 60px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    text-align: center;
+  }
+`;
+
+const LeftSide = styled.div`
+  max-width: 300px;
+
+  .highlight {
+    color: #60e5c2;
+  }
+`;
+
+const LogoText = styled.h1`
+  margin-left: 15px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+`;
+
+const Tagline = styled.p`
+  margin-top: 20px;
+  font-size: 14px;
+  color: #aaa;
+  line-height: 1.6;
+`;
+
+const RightSide = styled.div`
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+`;
+
+const LinksGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const GroupTitle = styled.h3`
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 12px;
+`;
+
+const SocialIcons = styled.div`
+  display: flex;
+  gap: 15px;
+
+  i {
+    font-size: 18px;
+    color: #aaa;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #60e5c2;
+    }
+  }
+`;
+
+const BottomBar = styled.div`
+  padding: 20px;
+  font-size: 13px;
+  color: #aaa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
   }
 `;
