@@ -41,6 +41,20 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             activeClass="active"
             className="whiteColor"
             style={{ padding: "10px 15px" }}
+            to="about"
+            spy={true}
+            smooth={true}
+            offset={-60}
+          >
+            About Us
+          </Link>
+        </li>
+        <li className="semiBold font15 pointer">
+          <Link
+            onClick={() => toggleSidebar(!sidebarOpen)}
+            activeClass="active"
+            className="whiteColor"
+            style={{ padding: "10px 15px" }}
             to="services"
             spy={true}
             smooth={true}
@@ -75,20 +89,6 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             offset={-60}
           >
             Testimonials
-          </Link>
-        </li>
-        <li className="semiBold font15 pointer">
-          <Link
-            onClick={() => toggleSidebar(!sidebarOpen)}
-            activeClass="active"
-            className="whiteColor"
-            style={{ padding: "10px 15px" }}
-            to="about"
-            spy={true}
-            smooth={true}
-            offset={-60}
-          >
-            About Us
           </Link>
         </li>
         <li className="semiBold font15 pointer">
