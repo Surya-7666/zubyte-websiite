@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import AboutImg from "../../assets/img/add/2.png"; // ✅ Make sure this exists!
+import AboutImg from "../../assets/img/add/2.jpg"; // ✅ Make sure this exists!
 
 export default function AboutUs() {
   return (
@@ -13,13 +13,9 @@ export default function AboutUs() {
         <TextSection>
           <h1 className="font40 extraBold">About Us</h1>
           <p className="font13">
-            We’re not just developers — we’re digital storytellers. 🚀 At our core, we blend innovation with experience
-            to craft web solutions that don’t just look great, but perform brilliantly.
+           We are a passionate team of developers, designers, and digital strategists committed to turning ideas into impactful digital products. From intuitive websites to powerful apps, we specialize in creating solutions that are not only visually appealing but also user-friendly and performance-driven.
           </p>
-          <p className="font13" style={{ marginTop: "20px" }}>
-            From startups to enterprises, we partner with brands to build digital products that push boundaries and
-            solve real problems. Every pixel, every line of code — done with intention. 💻✨
-          </p>
+          
         </TextSection>
       </Container>
     </Wrapper>
