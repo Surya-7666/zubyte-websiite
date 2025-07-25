@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/zubyte-websiite/static/css/main.dfa46af1.css",
+    "main.js": "/zubyte-websiite/static/js/main.09d1265e.js",
+    "static/js/453.a1f524dd.chunk.js": "/zubyte-websiite/static/js/453.a1f524dd.chunk.js",
+    "static/media/2.jpeg": "/zubyte-websiite/static/media/2.e959bdfbbe02d562113a.jpeg",
+    "static/media/6.jpeg": "/zubyte-websiite/static/media/6.d9b569fc0fa1fcd06ecb.jpeg",
+    "static/media/5.jpeg": "/zubyte-websiite/static/media/5.8e03ee48411888e8bc36.jpeg",
+    "static/media/slick.svg": "/zubyte-websiite/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/zubyte-websiite/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/zubyte-websiite/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/zubyte-websiite/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/zubyte-websiite/index.html",
+    "main.dfa46af1.css.map": "/zubyte-websiite/static/css/main.dfa46af1.css.map",
+    "main.09d1265e.js.map": "/zubyte-websiite/static/js/main.09d1265e.js.map",
+    "453.a1f524dd.chunk.js.map": "/zubyte-websiite/static/js/453.a1f524dd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dfa46af1.css",
+    "static/js/main.09d1265e.js"
+  ]
+}
